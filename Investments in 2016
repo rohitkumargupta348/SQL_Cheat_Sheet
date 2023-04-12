@@ -1,0 +1,4 @@
+# Write your MySQL query statement below
+select round(sum(tiv_2016),2) as tiv_2016 from Insurance i
+where exists(select * from Insurance where tiv_2015=i.tiv_2015 and pid<>i.pid)
+and not exists(select * from Insurance where (lat,lon)=(i.lat,i.lon) and pid<> i.pid);
